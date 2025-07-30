@@ -5,16 +5,16 @@ private String isbn;
 private String title;
 private String category;
 private int quantity;
-private Author author;
+//private Author author;
 //referencia al autor en la clase book ya que tienen relacion
 // 1:1 y facilita la busqueda por autor (no obligatorio)
 
-    public Book(String isbn, String title, String category, int quantity, Author author) {
+    public Book(String isbn, String title, String category, int quantity) {
         setIsbn(isbn);
         setTitle(title);
         setCategory(category);
         setQuantity(quantity);
-        setAuthor(author);
+        //setAuthor(author);
     } //comprobaciones con los setters desde el constructor, asi se aplican validaciones al crear el objeto
 
     public String getIsbn() {
@@ -63,16 +63,16 @@ private Author author;
         this.title = title;
     }
 
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        if (author == null) {
-            throw new IllegalArgumentException("Author cannot be null.");
-        }
-        this.author = author;
-    }
+//    public Author getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(Author author) {
+//        if (author == null) {
+//            throw new IllegalArgumentException("Author cannot be null.");
+//        }
+//        this.author = author;
+//    }
 
     //reducir cantidad al retirar un libro
     public boolean issueBook() {
@@ -101,13 +101,13 @@ private Author author;
     //facilitar debug e impresion de libros
     @Override
     public String toString() {
-        return String.format("%-22s %-20s %-12s %-10d %-20s %-30s",
+        return String.format("%-22s %-20s %-12s %-10d",
                 isbn,
                 title,
                 category,
-                quantity,
-                author != null ? author.getName() : "N/A",
-                author != null ? author.getEmail() : "N/A");
+                quantity);
+//                author != null ? author.getName() : "N/A",
+//                author != null ? author.getEmail() : "N/A");
     }
 }
 // getName y getEmail vendran de la clase Author, cuando se haga
