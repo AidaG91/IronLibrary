@@ -1,5 +1,7 @@
 isbn,title,category,quantity,author,email
 978-3-16-148410-0,Clean Code,Programming,5,Robert C. Martin,unclebob@example.com
+978-0-452-28424-1,Animal Farm,Satire,5,George Orwell,orwell@example.com
 978-0-06-231609-7,Sapiens: A Brief History of Humankind,History,4,Yuval Noah Harari,harari@example.com
 978-0-7432-7356-5,Angels & Demons,Mystery,6,Dan Brown,danbrown@example.com
 978-0-452-28423-4,1984,Dystopian,7,George Orwell,orwell@example.com
+978-0-123-45678-9,To the Lighthouse,Modernist,3,Virginia Woolf,woolf@example.com
