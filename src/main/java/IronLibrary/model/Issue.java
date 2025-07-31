@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /* Represents a Book lending in the IronLibrary system */
 public class Issue {
-    private int issueId; // Autoincrement
+    private int issueId;
     private String issueDate; // "YYYY-MM-DD"
     private String returnDate; // "YYYY-MM-DD"
     private Student issueStudent;
@@ -13,13 +13,18 @@ public class Issue {
 
     // Constructor
     public Issue(String issueDate, String returnDate, Student issueStudent, Book issueBook) {
-        this.issueDate = issueDate;
-        this.issueStudent = issueStudent;
-        this.issueBook = issueBook;
-        if (returnDate == null || returnDate.isEmpty())
-            this.returnDate = calculateReturnDate(issueDate);
-        else
-            this.returnDate = returnDate;
+        setIssueDate(issueDate);
+        setIssueStudent(issueStudent);
+        setIssueBook(issueBook);
+        setReturnDate(returnDate);
+    }
+
+    public Issue(int issueId, String issueDate, String returnDate, Student issueStudent, Book issueBook) {
+        this.issueId = issueId;
+        setIssueDate(issueDate);
+        setIssueStudent(issueStudent);
+        setIssueBook(issueBook);
+        setReturnDate(returnDate);
     }
 
     // Getters
@@ -31,10 +36,23 @@ public class Issue {
 
     // Setters
     public void setIssueId(int issueId) { this.issueId = issueId; }
-    public void setIssueStudent(Student issueStudent) { this.issueStudent = issueStudent; }
-    public void setIssueBook(Book issueBook) { this.issueBook = issueBook; }
+    public void setIssueStudent(Student issueStudent) {
+        if (issueStudent == null) {
+            throw new IllegalArgumentException("Student cannot be null.");
+        }
+        this.issueStudent = issueStudent;
+    }
+    public void setIssueBook(Book issueBook) {
+        if (issueBook == null) {
+            throw new IllegalArgumentException("Book cannot be null.");
+        }
+        this.issueBook = issueBook;
+    }
 
     public void setIssueDate(String issueDate) {
+        if (issueDate == null || issueDate.trim().isEmpty()) {
+            throw new IllegalArgumentException("Issue date cannot be null or empty.");
+        }
         this.issueDate = issueDate;
         // Recalculate returnDate if issueDate is changed
         this.returnDate = calculateReturnDate(issueDate);
@@ -82,23 +100,5 @@ public class Issue {
     public String toString() {
         return "Issue: " + issueBook.getTitle() + " to " + issueStudent.getName() +
                 " from " + issueDate + " to " + returnDate;
-    }
-
-    // Overriding equals() and hashCode() enables efficient access and search in hash-based collections (HashSet & HashMap). Good practice!
-    // Check if 2 Issue objs (instance) are equals based on their issueId (return: true or false)
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!(obj instanceof Issue))
-            return false;
-        Issue issue = (Issue) obj;
-        return issueId == issue.issueId;
-    }
-
-    // Generates hash code for Issue based on issueId
-    @Override
-    public int hashCode() {
-        return Objects.hash(issueId);
     }
 }

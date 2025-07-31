@@ -10,9 +10,9 @@ public class Author {// Private member variables
     // Parameterized constructor
     public Author(String name, String email, Book authorBook) {
         this.authorId = idCounter++;
-        this.name = name;
-        this.email = email;
-        this.authorBook = authorBook;
+        setName(name);
+        setEmail(email);
+        setAuthorBook(authorBook);
     }
 
     // Getter methods
@@ -34,15 +34,30 @@ public class Author {// Private member variables
 
     // Setter methods
     public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Author name cannot be null or empty.");
+        }
         this.name = name;
     }
 
     public void setEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Author email cannot be null or empty.");
+        }
         this.email = email;
     }
 
     public void setAuthorBook(Book authorBook) {
+        if (authorBook == null) {
+            throw new IllegalArgumentException("Author must be linked to a Book.");
+        }
         this.authorBook = authorBook;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %d, Name: %s, Email: %s, Book: %s",
+                authorId, name, email, authorBook != null ? authorBook.getTitle() : "None");
     }
 }
 
