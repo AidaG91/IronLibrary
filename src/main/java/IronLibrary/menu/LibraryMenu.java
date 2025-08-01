@@ -6,7 +6,6 @@ import IronLibrary.model.Issue;
 import IronLibrary.model.Student;
 
 import java.io.*;
-import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
@@ -15,49 +14,50 @@ public class LibraryMenu {
     private static final String BOOKS_FILE = "src/main/java/IronLibrary/books.csv";
     private static final String ISSUES_FILE = "src/main/java/IronLibrary/issues.csv";
     private static final String STUDENTS_FILE = "src/main/java/IronLibrary/students.csv";
+    private static String TEMP_FILE = "src/main/java/IronLibrary/books_temp.csv";
 
     public static void mainMenuInput(Scanner scanner) {
         System.out.println("\n[WELCOME TO IRONLIBRARY]");
-        int option;
+        String option;
 
         System.out.println("1 - Add a Book\n" +
                 "2 - Search book by Title\n" +
                 "3 - Search book by Category\n" +
                 "4 - Search book by Author\n" +
-                "5 - List ALL Books along with Author\n" +
+                "5 - List All Books along with Author\n" +
                 "6 - Issue Book to Student\n" +
                 "7 - List Books by usn\n" +
                 "8 - Add a Student\n" +
                 "9 - Exit\n");
         System.out.print("Choose an option: ");
 
-        option = scanner.nextInt();
+        option = scanner.nextLine();
         switch (option) {
-            case 1:
+            case "1":
                 addABook(scanner);
                 break;
-            case 2:
+            case "2":
                 searchBookByTitle(scanner);
                 break;
-            case 3:
+            case "3":
                 searchBookByCategory(scanner);
                 break;
-            case 4:
+            case "4":
                 searchBookByAuthor(scanner);
                 break;
-            case 5:
+            case "5":
                 listAllBooksWithAuthor(scanner);
                 break;
-            case 6:
+            case "6":
                 issueBookToStudent(scanner);
                 break;
-            case 7:
+            case "7":
                 listBooksByUsn(scanner);
                 break;
-            case 8:
+            case "8":
                 addAStudent(scanner);
                 break;
-            case 9:
+            case "9":
                 System.out.println("[Closing IronLibrary...]");
                 scanner.close();
                 exit(0);
@@ -123,6 +123,35 @@ public class LibraryMenu {
         }
     }
 
+    public static void updateCsv(String isbn, int newQuantity){
+        try (
+                BufferedReader reader = new BufferedReader(new FileReader(BOOKS_FILE));
+                FileWriter writer = new FileWriter(TEMP_FILE)
+        ) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 6 && data[0].trim().equals(isbn)) {
+                    data[3] = String.valueOf(newQuantity);
+                    line = String.join(",", data);
+                }
+                writer.write(line + "\n");
+            }
+        } catch (Exception e) {
+            System.out.println("Error updating books.csv: " + e.getMessage());
+            return;
+        }
+
+        File orig = new File(BOOKS_FILE);
+        File temp = new File(TEMP_FILE);
+        if (orig.delete()) {
+            temp.renameTo(orig);
+            System.out.println("Updated successfully: books.csv");
+        } else {
+            System.out.println("Could not replace books.csv.");
+        }
+    }
+
     // Check if Student by USN already exist (students.csv)
     public static boolean doesStudentExist(String usn) {
         final String STUDENTS_FILE = "src/main/java/IronLibrary/students.csv";
@@ -169,25 +198,15 @@ public class LibraryMenu {
     }
 
     // Print Issue (Option 6) - details of a single Issue (Book issued to a Student)
-    private static void printIssue(Issue issue) {
+    private static void printIssue(Issue issue, Book book, Student student) {
+        // Print confirmation of new Issue created
         System.out.println("----------------------------------------------");
-        System.out.println("Book Title: " + issue.getIssueBook().getTitle()
-                + "\nStudent Name: " + issue.getIssueStudent().getName()
-                + "\nUSN: " + issue.getIssueStudent().getUsn()
-                + "\nIssue Date: " + issue.getIssueDate()
-                + "\nReturn Date: " + issue.getReturnDate());
+        System.out.println("Book Title: " + book.getTitle());
+        System.out.println("Student Name: " + student.getName());
+        System.out.println("USN: " + student.getUsn());
+        System.out.println("Issue Date: " + issue.getIssueDate());
+        System.out.println("Return Date: " + issue.getReturnDate());
         System.out.println("----------------------------------------------");
-    }
-
-    // Print Issue List (Option 7) - a list of Issues (for example, when listing all books by USN)
-    private static void printIssuesList(List<Issue> issues) {
-        if (issues.isEmpty()) {
-            System.out.println("No results found.");
-            return;
-        }
-        for (Issue issue : issues) {
-            printIssue(issue);
-        }
     }
 
     // Options
@@ -340,13 +359,19 @@ public class LibraryMenu {
 
             // Extract data from CSV (books.csv)
             Book book = null;
+            Author author = null;
             try (BufferedReader reader = new BufferedReader(new FileReader(BOOKS_FILE))) {
                 reader.readLine(); // First line (Header) omitted
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
-                    if (data.length >= 4 && data[0].trim().equals(isbn.trim())) {
+                    if (data.length >= 6 && data[0].trim().equals(isbn.trim())) {
                         book = new Book(data[0], data[1], data[2], Integer.parseInt(data[3]));
+                        author = new Author(data[4], data[5]);
+                        int quantity = Integer.parseInt(data[3]);
+                        System.out.println(book.quantity);
+                        updateCsv(isbn, (quantity - 1));
+                        System.out.println(book.quantity);
                         break;
                     }
                 }
@@ -374,14 +399,7 @@ public class LibraryMenu {
                         issue.getReturnDate() + "\n");
             }
             // Print confirmation of new Issue created
-            System.out.println("----------------------------------------------");
-            System.out.println("Book Title: " + book.getTitle());
-            System.out.println("Student Name: " + student.getName());
-            System.out.println("USN: " + student.getUsn());
-            System.out.println("Issue Date: " + issue.getIssueDate());
-            System.out.println("Return Date: " + issue.getReturnDate());
-            System.out.println("----------------------------------------------");
-
+            printIssue(issue, book, student);
         } catch (Exception e) {
             System.out.println("Error creating new Issue: " + e.getMessage());
         }
@@ -397,7 +415,7 @@ public class LibraryMenu {
         // Read the issues CSV (issues.csv)
         boolean found = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(ISSUES_FILE))) {
-            reader.readLine(); // Saltar el encabezado
+            reader.readLine(); // First line (Header) omitted
             String line;
             System.out.println("\nBooks issued to USN: " + usn);
 
@@ -452,7 +470,8 @@ public class LibraryMenu {
             if (file.length() == 0 || !file.exists()) {
                 csv.write("usn,name\n"); // Header CSV
             }
-            csv.write(student.getUsn() + "," + student.getName() + "\n");
+            csv.write(student.getUsn() + "," +
+                    student.getName() + "\n");
             csv.close(); // Close File
 
             // Print confirmation of the added student

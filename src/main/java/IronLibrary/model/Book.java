@@ -4,8 +4,7 @@ public class Book {
 private String isbn;
 private String title;
 private String category;
-private int quantity;
-
+public int quantity;
 
     public Book(String isbn, String title, String category, int quantity) {
         setIsbn(isbn);
@@ -25,17 +24,16 @@ private int quantity;
         this.isbn = isbn;
     }
 
-
     public int getQuantity() {
         return quantity;
     }
 
     //evitar cantidades negativas
-    public void setQuantity(int quantity) {
+    public int setQuantity(int quantity) {
         if (quantity < 0) {
             throw new IllegalArgumentException("Quantity cannot be negative");
         }
-        this.quantity = quantity;
+        return this.quantity = quantity;
     }
 
     public String getCategory() {
@@ -61,28 +59,21 @@ private int quantity;
     }
 
     //reducir cantidad al retirar un libro
-    public boolean issueBook() {
-        if (quantity > 0) {
-            quantity--;
-            return true;
-        }
-        return false;
-    }
-
-    //añado una excepcion si no hay libros disponibles
-    public void issueBookOrThrow() {
-        if (quantity <= 0) {
+    public void issueBook() {
+        if (this.quantity > 0) {
+            System.out.println("He entrado");
+            System.out.println(this.quantity);
+            setQuantity(this.quantity - 1);
+            System.out.println(this.quantity);
+        } else {
             throw new IllegalStateException("No copies of \"" + title + "\" available to issue.");
         }
-        quantity--;
     }
 
     //incrementar cantidad al devolver un libro
     public void returnBook() {
-        quantity++;
+        setQuantity(quantity++);
     }
-
-
 
     //facilitar debug e impresion de libros
     @Override

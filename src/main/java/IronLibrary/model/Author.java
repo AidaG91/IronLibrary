@@ -15,6 +15,12 @@ public class Author {// Private member variables
         setAuthorBook(authorBook);
     }
 
+    public Author(String name, String email) {
+        this.authorId = idCounter++;
+        setName(name);
+        setEmail(email);
+    }
+
     // Getter methods
     public int getAuthorId() {
         return authorId;
