@@ -27,6 +27,12 @@ public class Issue {
         setReturnDate(returnDate);
     }
 
+    public Issue(String issueDate, Student issueStudent, Book issueBook) {
+        setIssueDate(issueDate);
+        setIssueStudent(issueStudent);
+        setIssueBook(issueBook);
+    }
+
     // Getters
     public int getIssueId() { return issueId; }
     public String getIssueDate() { return issueDate; }
