@@ -6,9 +6,9 @@ import static IronLibrary.utils.Choices.*;
 import static java.lang.System.exit;
 
 public class LibraryMenu {
-    public static final String BOOKS_FILE = "src/main/java/IronLibrary/csv/books.csv";
+    public static String BOOKS_FILE = "src/main/java/IronLibrary/csv/books.csv";
     public static final String ISSUES_FILE = "src/main/java/IronLibrary/csv/issues.csv";
-    public static final String STUDENTS_FILE = "src/main/java/IronLibrary/csv/students.csv";
+    public static String STUDENTS_FILE = "src/main/java/IronLibrary/csv/students.csv";
     public static final String TEMP_FILE = "src/main/java/IronLibrary/csv/books_temp.csv";
 
     public static void mainMenuInput(Scanner scanner) {
