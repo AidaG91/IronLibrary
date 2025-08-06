@@ -79,6 +79,6 @@ The project is organized into several packages to separate concerns:
 ```
 ## Team Members
 
-| <a href="https://github.com/AidaG91"><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHAxazJtZGdoNXFha2RqdnJ6emRyeGZ2YjNob2FnYmdsdDVlZDB4NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Brdlc8ulgB5Vk5mAhL/giphy.gif" width="150"/></a> | <a href="https://github.com/krub-dev"><img src="https://iili.io/FPi4BDv.png" width="150"/></a> | <a href="https://github.com/Lucintheskies"><img src="https://i.imgflip.com/65efzo.gif" width="150"/></a> | <a href="https://github.com/Carol-88"><img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eHc3bnRxZnJ3eDJvamduM2xicmV3d3c0YXZ2cWs5MG5nZ3phdzM3NiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jAe22Ec5iICCk/giphy.gif" width="150"/></a> |
+| <a href="https://github.com/AidaG91"><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHAxazJtZGdoNXFha2RqdnJ6emRyeGZ2YjNob2FnYmdsdDVlZDB4NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Brdlc8ulgB5Vk5mAhL/giphy.gif" width="150"/></a> | <a href="https://github.com/krub-dev"><img src="https://iili.io/FPi4BDv.png" width="150"/></a> | <a href="https://github.com/Lucintheskies"><img src="https://i.imgflip.com/65efzo.gif" width="150"/></a> | <a href="https://github.com/Carol-88"><img src="https://iili.io/FPshEOP.gif" width="150"/></a> |
 | :---: | :---: | :---: | :---: |
 | [AidaG91](https://github.com/AidaG91) | [krub-dev](https://github.com/krub-dev) | [Lucintheskies](https://github.com/Lucintheskies) | [Carol-88](https://github.com/Carol-88) |
