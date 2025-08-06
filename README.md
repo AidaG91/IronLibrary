@@ -103,7 +103,7 @@ The project is organized into several packages to separate concerns:
 ###
 
 <div align="left">
-  <img height="100" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eHc3bnRxZnJ3eDJvamduM2xicmV3d3c0YXZ2cWs5MG5nZ3phdzM3NiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jAe22Ec5iICCk/giphy.gif"  />
+  <img height="100" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Zm13ZjRpdmFyZHVpNzluam16bWdhN3RzMTQyOHM4NTF0Z3dwMmozOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3NnnS6Q8hVPZC/giphy.gif"  />
     <a href="https://github.com/Carol-88">Carol-88</a>
 </div>
 
