@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="92a86b7e-7765-4dbe-8550-aaec2b3925b4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/books.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/books.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/issues.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/issues.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/menu/LibraryMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/menu/LibraryMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Choices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Choices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/assets/Colors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Emojis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/assets/Emojis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Prints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Prints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/menu/LibraryMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/model/AuthorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/model/BookTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/model/IssueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IronLibrary/model/IssueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/model/StudentTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/utils/UtilsTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AidaG91&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Carol-88/IronLibrary.git&quot;,
+    &quot;accountId&quot;: &quot;299e0171-c454-4cb4-911a-ea5e4dfe8dd4&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="30gUWnETCmxhqtgICkQU2RsfXa5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.IronLibraryApp.executor": "Run",
+    "JUnit.ChoicesTest.executor": "Run",
+    "JUnit.ChoicesTest.testAddAStudent.executor": "Run",
+    "JUnit.ChoicesTest.testIssueBookToStudent.executor": "Run",
+    "JUnit.ChoicesTest.testListAllBooksWithAuthor.executor": "Run",
+    "JUnit.ChoicesTest.testListBooksByUsn.executor": "Run",
+    "JUnit.ChoicesTest.testSearchBookByAuthor.executor": "Run",
+    "JUnit.IssueTest.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "12-feature/add-testing-validations-errors",
+    "ignore.virus.scanning.warn.message": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="IronLibrary.utils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.IronLibraryApp">
+    <configuration name="IronLibraryApp" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="IronLibrary.Main" />
+      <module name="IronLibrary" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChoicesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IronLibrary" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="IronLibrary.assets.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="IronLibrary.utils" />
+      <option name="MAIN_CLASS_NAME" value="IronLibrary.utils.ChoicesTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IssueTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IronLibrary" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="IronLibrary.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="IronLibrary.model" />
+      <option name="MAIN_CLASS_NAME" value="IronLibrary.model.IssueTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.IronLibraryApp" />
+      <item itemvalue="JUnit.IssueTest" />
+      <item itemvalue="JUnit.ChoicesTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.IssueTest" />
+        <item itemvalue="JUnit.ChoicesTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="92a86b7e-7765-4dbe-8550-aaec2b3925b4" name="Changes" comment="" />
+      <created>1754048745999</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754048745999</updated>
+    </task>
+    <servers />
+  </component>
+</project>
