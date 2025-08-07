@@ -11,15 +11,16 @@ import java.util.Scanner;
 import static IronLibrary.menu.LibraryMenu.STUDENTS_FILE;
 import static IronLibrary.menu.LibraryMenu.BOOKS_FILE;
 import static IronLibrary.menu.LibraryMenu.ISSUES_FILE;
+import static IronLibrary.utils.Colors.*;
+import static IronLibrary.utils.Emojis.*;
 import static IronLibrary.utils.Prints.printIssue;
 import static IronLibrary.utils.Utils.*;
-import static IronLibrary.utils.Utils.doesStudentExist;
 
 public class Choices {
     // Options
     // Option 1: Add a Book to CSV (books.csv)
     public static void addABook(Scanner scanner) {
-        System.out.println("[Add a Book]");
+        System.out.println(WHITE_BRIGHT + "[Add a Book]" + RESET);
 
         try {
             System.out.print("Enter ISBN: ");
@@ -36,7 +37,7 @@ public class Choices {
             int numBooks = scanner.nextInt();
 
             if (numBooks < 0) {
-                System.out.println("The number of copies cannot be negative.");
+                System.out.println(WARNING + RED_BRIGHT + " The number of copies cannot be negative." + RESET);
                 return;
             }
 
@@ -64,54 +65,54 @@ public class Choices {
             csv.close(); // Close File
 
             // Print confirmation of the added book and author details
-            System.out.println("----------------------------------------------");
-            System.out.println("\n[Book successfully created]\n"
+            System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
+            System.out.println(GREEN_BRIGHT + "\n[Book successfully created]\n"
                     + "ISBN: " + book.getIsbn() + "\n"
                     + "Title: " + book.getTitle() + "\n"
                     + "Category: " + book.getCategory() + "\n"
                     + "Author Name: " + author.getName() + "\n"
                     + "Author Mail: " + author.getEmail() + "\n"
-                    + "Copies: " + book.getQuantity() + "\n");
-            System.out.println("----------------------------------------------");
+                    + "Copies: " + book.getQuantity() + "\n" + RESET);
+            System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
         } catch (Exception e) {
-            System.out.println("Error saving the book: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error saving the book: " + RESET + e.getMessage());
         }
     }
 
     // Search using searchBooks()
     // Option 2 - Search a Book by Title
     public static void searchBookByTitle(Scanner scanner) {
-        System.out.println("[Search by Title]");
+        System.out.println(WHITE_BRIGHT + "[Search by Title]" + RESET);
         System.out.print("Enter a title: ");
         String title = scanner.nextLine();
         try {
             searchBooks(BOOKS_FILE, title, "title");
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error: " + RESET + e.getMessage());
         }
     }
 
     // Option 3 - Search a Book by Category
     public static void searchBookByCategory(Scanner scanner) {
-        System.out.println("[Search by Category]");
+        System.out.println(WHITE_BRIGHT + "[Search by Category]" + RESET);
         System.out.print("Enter a category: ");
         String category = scanner.nextLine();
         try {
             searchBooks(BOOKS_FILE, category, "category");
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error: " + RESET + e.getMessage());
         }
     }
 
     // Option 4 - Search a Book by Author
     public static void searchBookByAuthor(Scanner scanner) {
-        System.out.println("[Search by Author]");
+        System.out.println(WHITE_BRIGHT + "[Search by Author]" + RESET);
         System.out.print("Enter author name or email: ");
         String author = scanner.nextLine();
         try {
             searchBooks(BOOKS_FILE, author, "author");
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error: " + RESET + e.getMessage());
         }
     }
 
@@ -120,13 +121,13 @@ public class Choices {
         try {
             searchBooks(BOOKS_FILE, "", "all");
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error: " + RESET + e.getMessage());
         }
     }
 
     // Option 6: Assign a Book to a Student (Issue)
     public static void issueBookToStudent(Scanner scanner) {
-        System.out.println("[Create Issue]");
+        System.out.println(WHITE_BRIGHT + "[Create Issue]" + RESET);
 
         System.out.print("Enter the student's USN: ");
         String usn = scanner.nextLine();
@@ -136,7 +137,7 @@ public class Choices {
         try {
             // Check if Student already exist
             if (!doesStudentExist(usn)) {
-                System.out.println("Student with USN " + usn + " not found. Please add the student first.");
+                System.out.println(WARNING + RED_BRIGHT + "Student with USN " + usn + " not found. Please add the student first." + RESET);
                 return;
             }
 
@@ -155,7 +156,7 @@ public class Choices {
             }
 
             if (student == null) {
-                System.out.println("Error loading student data.");
+                System.out.println(RED_BRIGHT + "Error loading student data." + RESET);
                 return;
             }
 
@@ -169,16 +170,14 @@ public class Choices {
                     if (data.length >= 6 && data[0].trim().equals(isbn.trim())) {
                         book = new Book(data[0], data[1], data[2], Integer.parseInt(data[3]));
                         int quantity = Integer.parseInt(data[3]);
-                        System.out.println(book.quantity);
                         updateCsv(isbn, (quantity - 1));
-                        System.out.println(book.quantity);
                         break;
                     }
                 }
             }
 
             if (book == null) {
-                System.out.println("Book with ISBN " + isbn + " not found.");
+                System.out.println(WARNING + YELLOW_BRIGHT + " Book with ISBN " + isbn + " not found." + RESET);
                 return;
             }
 
@@ -201,13 +200,13 @@ public class Choices {
             // Print confirmation of new Issue created
             printIssue(issue, book, student);
         } catch (Exception e) {
-            System.out.println("Error creating new Issue: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error creating new Issue: " + RESET + e.getMessage());
         }
     }
 
     // Option 7 - List ALL the Books rented by a Student (USN)
     public static void listBooksByUsn(Scanner scanner) {
-        System.out.println("[List Books by USN]");
+        System.out.println(WHITE_BRIGHT + "[List Books by USN]" + RESET);
         System.out.print("Enter the student's USN: ");
         String usn = scanner.nextLine();
 
@@ -226,24 +225,24 @@ public class Choices {
                     String returnDate = data[5];
 
                     // Print the list of issued books (show title, returnDate)
-                    System.out.println("----------------------------------------------");
-                    System.out.println("Book Title: " + bookTitle);
-                    System.out.println("Return Date: " + returnDate);
-                    System.out.println("----------------------------------------------");
+                    System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
+                    System.out.println(WHITE_BRIGHT + "Book Title: " + bookTitle);
+                    daysUntilDue(returnDate);
+                    System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error reading issued books: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error reading issued books: " + RESET + e.getMessage());
         }
 
         if (!found) {
-            System.out.println("No books found for this USN.");
+            System.out.println(RED_BRIGHT + "No books found for this USN." + RESET);
         }
     }
 
     // [EXTRA] Option 8 - add a Student to a CSV (students.csv)
     public static void addAStudent(Scanner scanner) {
-        System.out.println("[Add a Student]");
+        System.out.println(WHITE_BRIGHT + "[Add a Student]" + RESET);
 
         try {
             System.out.print("Enter USN: ");
@@ -253,7 +252,7 @@ public class Choices {
 
             // Check if Student already exist
             if (doesStudentExist(usn)) {
-                System.out.println("Student with USN " + usn + " already exists.");
+                System.out.println(WARNING + YELLOW_BRIGHT + " Student with USN " + usn + " already exists." + RESET);
                 return;
             }
 
@@ -273,13 +272,13 @@ public class Choices {
             csv.close(); // Close File
 
             // Print confirmation of the added student
-            System.out.println("----------------------------------------------");
-            System.out.println("[Student successfully created]\n"
+            System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
+            System.out.println(GREEN_BRIGHT + "[Student successfully created]\n"
                     + "USN: " + student.getUsn() + "\n"
-                    + "Name: " + student.getName());
-            System.out.println("----------------------------------------------");
+                    + "Name: " + student.getName() + RESET);
+            System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
         } catch (Exception e) {
-            System.out.println("Error saving the student: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error saving the student: " + RESET + e.getMessage());
         }
     }
 }

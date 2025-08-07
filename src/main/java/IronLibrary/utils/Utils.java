@@ -4,10 +4,13 @@ import IronLibrary.model.Author;
 import IronLibrary.model.Book;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.util.Scanner;
 
 import static IronLibrary.menu.LibraryMenu.*;
-import static IronLibrary.utils.Prints.printBook;
-import static IronLibrary.utils.Prints.printBookAndAuthor;
+import static IronLibrary.utils.Emojis.*;
+import static IronLibrary.utils.Prints.*;
+import static IronLibrary.utils.Colors.*;
 
 public class Utils {
     // Utils
@@ -31,7 +34,7 @@ public class Utils {
                     Book book = new Book(isbn, title, category, Integer.parseInt(quantity));
                     Author author = new Author(authorName, authorMail, book);
 
-                    // search by type
+                    // Search by type
                     switch (searchType.toLowerCase()) {
                         case "title":
                             if (title.toLowerCase().contains(searchStr.toLowerCase())) {
@@ -62,11 +65,12 @@ public class Utils {
                 }
             }
             if (!found) {
-                System.out.println("No results found.");
+                System.out.println(WARNING + YELLOW_BRIGHT + " No results found." + RESET);
             }
         }
     }
 
+    // Method to update the quantity of a book in the CSV file
     public static void updateCsv(String isbn, int newQuantity){
         try (
                 BufferedReader reader = new BufferedReader(new FileReader(BOOKS_FILE));
@@ -82,7 +86,7 @@ public class Utils {
                 writer.write(line + "\n");
             }
         } catch (Exception e) {
-            System.out.println("Error updating books.csv: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error updating books.csv: " + RESET + e.getMessage());
             return;
         }
 
@@ -90,15 +94,19 @@ public class Utils {
         File temp = new File(TEMP_FILE);
         if (orig.delete()) {
             temp.renameTo(orig);
-            System.out.println("Updated successfully: books.csv");
+            System.out.println(GREEN_BRIGHT + "Updated successfully: books.csv" + RESET);
         } else {
-            System.out.println("Could not replace books.csv.");
+            System.out.println(RED_BRIGHT + "Could not replace books.csv." + RESET);
         }
     }
 
     // Check if Student by USN already exist (students.csv)
     public static boolean doesStudentExist(String usn) {
-        final String STUDENTS_FILE = "src/main/java/IronLibrary/students.csv";
+        if (usn == null || usn.trim().isEmpty()) {
+            System.out.println(RED_BRIGHT + "USN cannot be null or empty." + RESET);
+            return false;
+        }
+
         File file = new File(STUDENTS_FILE);
         if (!file.exists()) {
             return false;
@@ -113,8 +121,25 @@ public class Utils {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Error reading students file: " + e.getMessage());
+            System.out.println(RED_BRIGHT + "Error reading students file: " + RESET + e.getMessage());
         }
         return false;
+    }
+
+    // Return number of days left from NOW to returnDate (can be negative if returnDate is past already)
+    public static void daysUntilDue(String returnDate) {
+        LocalDate now = LocalDate.now();
+        LocalDate ret = LocalDate.parse(returnDate);
+        int daysLeft = now.until(ret).getDays();
+        System.out.println("Return Date: " + returnDate + " | Today: " + now);
+        if (daysLeft < 0) // If negative, overdue. Just a warning
+            System.out.println(WARNING + " The book is overdue by: " + RED_BRIGHT + Math.abs(daysLeft) + " day(s)." + RESET);
+        else
+            System.out.println("Days left to return the book: " + GREEN_BRIGHT + daysLeft + " day(s)." + RESET);
+    }
+
+    public static void pause(Scanner scanner) {
+        System.out.print(WHITE + "Press Enter to continue..." + RESET);
+        scanner.nextLine();
     }
 }

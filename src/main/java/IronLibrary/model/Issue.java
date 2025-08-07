@@ -1,7 +1,6 @@
 package IronLibrary.model;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 /* Represents a Book lending in the IronLibrary system */
 public class Issue {
@@ -82,23 +81,6 @@ public class Issue {
         LocalDate date = LocalDate.parse(issueDate); // Parse the issue date string to LocalDate
         LocalDate returnDate = date.plusDays(7); // Add 7 days to get the due date
         return returnDate.toString(); // Convert the LocalDate back to string
-    }
-
-    // Check if the Book was returned on time (return: true or false)
-    public boolean isReturnedOnTime(String actualReturnDate) {
-        LocalDate actual = LocalDate.parse(actualReturnDate);
-        LocalDate ret = LocalDate.parse(returnDate);
-        return !actual.isAfter(ret);
-    }
-
-    // Return number of days left from NOW to returnDate (can be negative if returnDate is past already)
-    public long daysUntilDue() {
-        LocalDate now = LocalDate.now();
-        LocalDate ret = LocalDate.parse(returnDate);
-        int daysLeft = now.until(ret).getDays();
-        if (daysLeft < 0) // If negative, overdue. Just a warning
-            System.out.println("Warning: The book is overdue by " + Math.abs(daysLeft) + " day(s).");
-        return daysLeft;
     }
 
     // Provides a detailed representation of Issue for info and display

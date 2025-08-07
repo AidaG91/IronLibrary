@@ -22,6 +22,10 @@ class ChoicesTest {
     private static final String TEST_STUDENTS_FILE = "test_students.csv";
     private static final Path TEST_SFILE_PATH = Paths.get(TEST_STUDENTS_FILE);
 
+
+    private static final String TEST_ISSUES_FILE = "test_issues.csv";
+    private static final Path TEST_ISSUES_PATH = Paths.get(TEST_ISSUES_FILE);
+
     String simulatedBook = String.join("\n",
             "1234567890", // ISBN
             "JUnit Testing Book", // Title
@@ -44,14 +48,20 @@ class ChoicesTest {
     Scanner scannerBookTwo = new Scanner(new ByteArrayInputStream(simulatedBookTwo.getBytes()));
 
     String simulatedStudent = String.join("\n",
-            "BCN2781", // USN
-            "Paquita Salas" // Student name
-    ) + "\n";
+            "BCN2781",
+            "Paquita Salas") + "\n";
 
     Scanner scannerStudent = new Scanner(new ByteArrayInputStream(simulatedStudent.getBytes()));
 
+    String simulatedIssue = String.join("\n",
+            "BCN2781",
+            "1234567890") + "\n";
+
+    Scanner scannerIssue = new Scanner(new ByteArrayInputStream(simulatedIssue.getBytes()));
+
     @BeforeEach
     void setUp() throws IOException {
+        // Clean and create the books, students, and issues files
         Files.deleteIfExists(TEST_FILE_PATH);
         Files.createFile(TEST_FILE_PATH);
 
@@ -61,19 +71,34 @@ class ChoicesTest {
         LibraryMenu.BOOKS_FILE = TEST_BOOKS_FILE;
         LibraryMenu.STUDENTS_FILE = TEST_STUDENTS_FILE;
 
+        Files.deleteIfExists(TEST_ISSUES_PATH);
+        Files.createFile(TEST_ISSUES_PATH);
+
+        // Assign test files to the LibraryMenu static variables
+        LibraryMenu.BOOKS_FILE = TEST_BOOKS_FILE;
+        LibraryMenu.STUDENTS_FILE = TEST_STUDENTS_FILE;
+        LibraryMenu.ISSUES_FILE = TEST_ISSUES_FILE;
+
+        // Add books
         Choices.addABook(scannerBook);
         Choices.addABook(scannerBookTwo);
+        // Add a student
         Choices.addAStudent(scannerStudent);
+        // Create Issue, book linked to a student
+        Choices.issueBookToStudent(scannerIssue);
     }
 
     @AfterEach
     void tearDown() throws IOException {
+        // Remove test files after each test
         Files.deleteIfExists(TEST_FILE_PATH);
         Files.deleteIfExists(TEST_SFILE_PATH);
+        Files.deleteIfExists(TEST_ISSUES_PATH);
     }
 
     @Test
     void testAddABook() throws IOException {
+        // Verify the book file contains expected book info
         String content = Files.readString(TEST_FILE_PATH);
         assertTrue(content.contains("1234567890"));
         assertTrue(content.contains("JUnit Testing Book"));
@@ -128,7 +153,6 @@ class ChoicesTest {
         Choices.listAllBooksWithAuthor(scannerBooksWithAuthor);
 
         String content = Files.readString(TEST_FILE_PATH);
-       // assertTrue(content.contains(simulatedBook));
         assertTrue(content.contains("1234567890"));
         assertTrue(content.contains("JUnit Testing Book"));
         assertTrue(content.contains("Programming"));
@@ -139,16 +163,32 @@ class ChoicesTest {
 
     @Test
     void testIssueBookToStudent() throws IOException {
-       // String simulatedInput = ;
+        String simulatedInput = String.join("\n", "BCN2781", "1234567890");
+        Scanner scanner = new Scanner(new ByteArrayInputStream(simulatedInput.getBytes()));
 
+        Choices.issueBookToStudent(scanner);
+
+        String issuesContent = Files.readString(TEST_ISSUES_PATH);
+        assertTrue(issuesContent.contains("BCN2781"));
+        assertTrue(issuesContent.contains("1234567890"));
+
+        String booksContent = Files.readString(TEST_FILE_PATH);
+        // Quantity should be 4 after issuing the book
+        assertTrue(booksContent.contains("4"));
     }
 
     @Test
     void testListBooksByUsn() throws IOException {
+       // Check the issues file directly for the student "Paquita Salas" -> USN: BCN2781
+        String issuesContent = Files.readString(TEST_ISSUES_PATH);
+        assertTrue(issuesContent.contains("BCN2781"));
+        assertTrue(issuesContent.contains("Paquita Salas"));
+        assertTrue(issuesContent.contains("JUnit Testing Book"));
     }
 
     @Test
     void testAddAStudent() throws IOException {
+        // Verify the student file contains the expected student info
         String content = Files.readString(TEST_SFILE_PATH);
         assertTrue(content.contains("BCN2781"));
         assertTrue(content.contains("Paquita Salas"));
