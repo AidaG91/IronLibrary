@@ -3,6 +3,8 @@
 
 IronLibrary is a command-line library management system built with Java. It provides essential functionalities for managing books, students, and lending records through a simple console interface. All data is persisted using CSV files, making it a lightweight and portable application.
 
+[Canva presentation](https://www.canva.com/design/DAGvBTHpIj0/pHdhT1a4oEAZA7MYU-sqFA/edit?utm_content=DAGvBTHpIj0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 ## Features
 
 -   **Add Books**: Add new books to the library catalogue, specifying ISBN, title, category, quantity, and author details.
