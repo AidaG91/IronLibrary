@@ -3,8 +3,8 @@ package IronLibrary.menu;
 import java.util.Scanner;
 
 import static IronLibrary.utils.Choices.*;
-import static IronLibrary.utils.Emojis.*;
-import static IronLibrary.utils.Colors.*;
+import static IronLibrary.assets.Emojis.*;
+import static IronLibrary.assets.Colors.*;
 import static IronLibrary.utils.Utils.*;
 import static java.lang.System.exit;
 
@@ -19,15 +19,16 @@ public class LibraryMenu {
         String option;
 
         System.out.println(
-                WHITE_BRIGHT + "1 - " + BOOK + GREEN_BRIGHT  + " Add a Book" + RESET + "\n" +
-                        WHITE_BRIGHT + "2 - " + TAG + BLUE_BRIGHT   + " Search book by Title" + RESET + "\n" +
-                        WHITE_BRIGHT + "3 - " + CATEGORY + BLUE_BRIGHT   + " Search book by Category" + RESET + "\n" +
-                        WHITE_BRIGHT + "4 - " + TEACHER + BLUE_BRIGHT   + " Search book by Author" + RESET + "\n" +
-                        WHITE_BRIGHT + "5 - " + BOOKS + BLUE_BRIGHT   + " List All Books along with Author" + RESET + "\n" +
-                        WHITE_BRIGHT + "6 - " + LINK + GREEN_BRIGHT + " Issue Book to Student" + RESET + "\n" +
-                        WHITE_BRIGHT + "7 - " + ID_CARD + BLUE_BRIGHT + " List Books by USN" + RESET + "\n" +
-                        WHITE_BRIGHT + "8 - " + STUDENT + GREEN_BRIGHT  + " Add a Student" + RESET + "\n" +
-                        WHITE_BRIGHT + "9 - " + RED_BRIGHT + EXIT + " Exit" + RESET + "\n"
+                        WHITE_BRIGHT + "01 - " + BOOK + GREEN_BRIGHT  + " Add a Book" + RESET + "\n" +
+                        WHITE_BRIGHT + "02 - " + STUDENT + GREEN_BRIGHT  + " Add a Student" + RESET + "\n" +
+                        WHITE_BRIGHT + "03 - " + TAG + BLUE_BRIGHT   + " Search book by Title" + RESET + "\n" +
+                        WHITE_BRIGHT + "04 - " + CATEGORY + BLUE_BRIGHT   + " Search book by Category" + RESET + "\n" +
+                        WHITE_BRIGHT + "05 - " + TEACHER + BLUE_BRIGHT   + " Search book by Author" + RESET + "\n" +
+                        WHITE_BRIGHT + "06 - " + BOOKS + BLUE_BRIGHT   + " List All Books along with Author" + RESET + "\n" +
+                        WHITE_BRIGHT + "07 - " + ID_CARD + BLUE_BRIGHT + " List Books by USN" + RESET + "\n" +
+                        WHITE_BRIGHT + "08 - " + LINK + YELLOW_BRIGHT + " Check out Book" + RESET + "\n" +
+                        WHITE_BRIGHT + "09 - " + RETURN + YELLOW_BRIGHT + " Return a Book" + RESET + "\n" +
+                        WHITE_BRIGHT + "10 - " + RED_BRIGHT + EXIT + " Exit" + RESET + "\n"
         );
 
         System.out.print(YELLOW + SHUFFLE + " Choose an option: " + RESET);
@@ -36,39 +37,43 @@ public class LibraryMenu {
         System.out.println(GREEN_BRIGHT + "\n----------------------------------------------" + RESET);
 
         switch (option) {
-            case "1":
+            case "1", "01":
                 addABook(scanner);
                 pause(scanner);
                 break;
-            case "2":
-                searchBookByTitle(scanner);
-                pause(scanner);
-                break;
-            case "3":
-                searchBookByCategory(scanner);
-                pause(scanner);
-                break;
-            case "4":
-                searchBookByAuthor(scanner);
-                pause(scanner);
-                break;
-            case "5":
-                listAllBooksWithAuthor(scanner);
-                pause(scanner);
-                break;
-            case "6":
-                issueBookToStudent(scanner);
-                pause(scanner);
-                break;
-            case "7":
-                listBooksByUsn(scanner);
-                pause(scanner);
-                break;
-            case "8":
+            case "2", "02":
                 addAStudent(scanner);
                 pause(scanner);
                 break;
-            case "9", "exit", "Exit", "EXIT":
+            case "3", "03":
+                searchBookByTitle(scanner);
+                pause(scanner);
+                break;
+            case "4", "04":
+                searchBookByCategory(scanner);
+                pause(scanner);
+                break;
+            case "5", "05":
+                searchBookByAuthor(scanner);
+                pause(scanner);
+                break;
+            case "6", "06":
+                listAllBooksWithAuthor(scanner);
+                pause(scanner);
+                break;
+            case "7", "07":
+                listBooksByUsn(scanner);
+                pause(scanner);
+                break;
+            case "8", "08":
+                issueBookToStudent(scanner);
+                pause(scanner);
+                break;
+            case "9", "09":
+                returnABook(scanner);
+                pause(scanner);
+                break;
+            case "10", "exit", "Exit", "EXIT":
                 System.out.println("\nDeveloped with " + HEART + " by: " + WHITE_BRIGHT + "\nAïda, Lucía, Kiko, Carolina" + RESET);
                 System.out.println(GREEN_BRIGHT + "\n----------------------------------------------" + RESET);
                 System.out.println(RED + "\n[Closing IronLibrary... " + WAVE + "]" + RESET);

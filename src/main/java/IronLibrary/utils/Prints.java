@@ -7,7 +7,7 @@ import IronLibrary.model.Student;
 
 import java.util.Scanner;
 
-import static IronLibrary.utils.Colors.*;
+import static IronLibrary.assets.Colors.*;
 import static IronLibrary.utils.Utils.pause;
 
 public class Prints {

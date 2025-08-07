@@ -11,8 +11,8 @@ import java.util.Scanner;
 import static IronLibrary.menu.LibraryMenu.STUDENTS_FILE;
 import static IronLibrary.menu.LibraryMenu.BOOKS_FILE;
 import static IronLibrary.menu.LibraryMenu.ISSUES_FILE;
-import static IronLibrary.utils.Colors.*;
-import static IronLibrary.utils.Emojis.*;
+import static IronLibrary.assets.Colors.*;
+import static IronLibrary.assets.Emojis.*;
 import static IronLibrary.utils.Prints.printIssue;
 import static IronLibrary.utils.Utils.*;
 
@@ -25,6 +25,9 @@ public class Choices {
         try {
             System.out.print("Enter ISBN: ");
             String isbn = scanner.nextLine();
+            // Check if the book already exists
+            if(bookExists(isbn))
+                return;
             System.out.print("Enter title: ");
             String title = scanner.nextLine();
             System.out.print("Enter category: ");
@@ -80,7 +83,7 @@ public class Choices {
     }
 
     // Search using searchBooks()
-    // Option 2 - Search a Book by Title
+    // Option 3 - Search a Book by Title
     public static void searchBookByTitle(Scanner scanner) {
         System.out.println(WHITE_BRIGHT + "[Search by Title]" + RESET);
         System.out.print("Enter a title: ");
@@ -92,7 +95,7 @@ public class Choices {
         }
     }
 
-    // Option 3 - Search a Book by Category
+    // Option 4 - Search a Book by Category
     public static void searchBookByCategory(Scanner scanner) {
         System.out.println(WHITE_BRIGHT + "[Search by Category]" + RESET);
         System.out.print("Enter a category: ");
@@ -104,7 +107,7 @@ public class Choices {
         }
     }
 
-    // Option 4 - Search a Book by Author
+    // Option 5 - Search a Book by Author
     public static void searchBookByAuthor(Scanner scanner) {
         System.out.println(WHITE_BRIGHT + "[Search by Author]" + RESET);
         System.out.print("Enter author name or email: ");
@@ -116,7 +119,7 @@ public class Choices {
         }
     }
 
-    // Option 5 - List All Books with Author
+    // Option 6 - List All Books with Author
     public static void listAllBooksWithAuthor(Scanner scanner) {
         try {
             searchBooks(BOOKS_FILE, "", "all");
@@ -125,7 +128,7 @@ public class Choices {
         }
     }
 
-    // Option 6: Assign a Book to a Student (Issue)
+    // Option 8 - Assign a Book to a Student (Issue)
     public static void issueBookToStudent(Scanner scanner) {
         System.out.println(WHITE_BRIGHT + "[Create Issue]" + RESET);
 
@@ -141,6 +144,10 @@ public class Choices {
                 return;
             }
 
+            // Check if the issue already exists
+            if (issueExists(usn, isbn))
+                return;
+
             // Extract data from CSV (students.csv)
             Student student = null;
             try (BufferedReader reader = new BufferedReader(new FileReader(STUDENTS_FILE))) {
@@ -155,6 +162,7 @@ public class Choices {
                 }
             }
 
+            // If student not found, print error message
             if (student == null) {
                 System.out.println(RED_BRIGHT + "Error loading student data." + RESET);
                 return;
@@ -170,7 +178,7 @@ public class Choices {
                     if (data.length >= 6 && data[0].trim().equals(isbn.trim())) {
                         book = new Book(data[0], data[1], data[2], Integer.parseInt(data[3]));
                         int quantity = Integer.parseInt(data[3]);
-                        updateCsv(isbn, (quantity - 1));
+                        updateBookQuantity(isbn, (quantity - 1));
                         break;
                     }
                 }
@@ -185,6 +193,11 @@ public class Choices {
             String issueDate = java.time.LocalDate.now().toString(); // "YYYY-MM-DD"
             Issue issue = new Issue(issueDate, student, book); // Using Issue's internal logic to calc returnDate
 
+
+            if (issue.getIssueBook().getIsbn() == isbn && issue.getIssueBook().getQuantity() <= 0) {
+                System.out.println(WARNING + YELLOW_BRIGHT + " No copies available for this book." + RESET);
+                return;
+            }
             // Write new issue data to CSV (issues.csv)
             File issuesFile = new File(ISSUES_FILE);
             try (FileWriter csv = new FileWriter(ISSUES_FILE, true)) {
@@ -204,7 +217,7 @@ public class Choices {
         }
     }
 
-    // Option 7 - List ALL the Books rented by a Student (USN)
+    // Option 6 - List ALL the Books rented by a Student (USN)
     public static void listBooksByUsn(Scanner scanner) {
         System.out.println(WHITE_BRIGHT + "[List Books by USN]" + RESET);
         System.out.print("Enter the student's USN: ");
@@ -240,7 +253,7 @@ public class Choices {
         }
     }
 
-    // [EXTRA] Option 8 - add a Student to a CSV (students.csv)
+    // [EXTRA] Option 2 - add a Student to a CSV (students.csv)
     public static void addAStudent(Scanner scanner) {
         System.out.println(WHITE_BRIGHT + "[Add a Student]" + RESET);
 
@@ -280,5 +293,33 @@ public class Choices {
         } catch (Exception e) {
             System.out.println(RED_BRIGHT + "Error saving the student: " + RESET + e.getMessage());
         }
+    }
+    // Method to update book quantity in books.csv and delete the issue from issues.csv
+    public static void returnABook(Scanner scanner) {
+        System.out.println(WHITE_BRIGHT + "[Return a Book]" + RESET);
+        System.out.print("Enter the student's USN: ");
+        String usn = scanner.nextLine();
+        System.out.print("Enter the ISBN of the book to return: ");
+        String isbn = scanner.nextLine();
+
+        // Update book quantity in books.csv
+        Book book = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(BOOKS_FILE))) {
+            reader.readLine(); // Skip header
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 6 && data[0].trim().equals(isbn.trim())) {
+                    book = new Book(data[0], data[1], data[2], Integer.parseInt(data[3]));
+                    int quantity = Integer.parseInt(data[3]);
+                    updateBookQuantity(isbn, quantity + 1);
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        // Remove the corresponding issue from issues.csv
+        removeIssue(usn, isbn);
     }
 }

@@ -8,8 +8,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/books.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/books.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/issues.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/issues.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/students.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/students.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/menu/LibraryMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/menu/LibraryMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Choices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Choices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/assets/Colors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Emojis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/assets/Emojis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Prints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Prints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/menu/LibraryMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/model/AuthorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/model/BookTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/model/IssueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IronLibrary/model/IssueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/model/StudentTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/utils/UtilsTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +72,7 @@
     "JUnit.ChoicesTest.testListAllBooksWithAuthor.executor": "Run",
     "JUnit.ChoicesTest.testListBooksByUsn.executor": "Run",
     "JUnit.ChoicesTest.testSearchBookByAuthor.executor": "Run",
+    "JUnit.IssueTest.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
@@ -92,7 +103,7 @@
       <module name="IronLibrary" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="IronLibrary.utils.*" />
+          <option name="PATTERN" value="IronLibrary.assets.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,12 +114,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IssueTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IronLibrary" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="IronLibrary.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="IronLibrary.model" />
+      <option name="MAIN_CLASS_NAME" value="IronLibrary.model.IssueTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.IronLibraryApp" />
+      <item itemvalue="JUnit.IssueTest" />
       <item itemvalue="JUnit.ChoicesTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IssueTest" />
         <item itemvalue="JUnit.ChoicesTest" />
       </list>
     </recent_temporary>

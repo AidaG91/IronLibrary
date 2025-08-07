@@ -1,16 +1,16 @@
 isbn,title,category,quantity,author,email
 978-3-16-148410-0,Clean Code,Programming,5,Robert C. Martin,unclebob@example.com
 978-0-452-28424-1,Animal Farm,Satire,4,George Orwell,orwell@example.com
-978-0-06-231609-7,Sapiens: A Brief History of Humankind,History,4,Yuval Noah Harari,harari@example.com
+978-0-06-231609-7,Sapiens: A Brief History of Humankind,History,3,Yuval Noah Harari,harari@example.com
 978-0-7432-7356-5,Angels & Demons,Mystery,5,Dan Brown,danbrown@example.com
 978-0-452-28423-4,1984,Dystopian,5,George Orwell,orwell@example.com
-978-0-123-45678-9,To the Lighthouse,Modernist,3,Virginia Woolf,woolf@example.com
+978-0-123-45678-9,To the Lighthouse,Modernist,2,Virginia Woolf,woolf@example.com
 978-0-307-74365-1,It,Terror,6,Stephen King,it@example.com
 978-0-7432-7356-5,The Shining,Terror,5,Stephen King,shining@example.com
 978-0-553-10354-0,A Game of Thrones,Fantasy,14,George R.R. Martin,agameofthrones@example.com
 978-0-618-05326-7,The Lord of the Rings,Fantasy,18,J.R.R. Tolkien,lordoftherings@example.com
-978-0-7434-7711-2,The Name of the Wind,Fantasy,10,Patrick Rothfuss,thenameofthewind@example.com
+978-0-7434-7711-2,The Name of the Wind,Fantasy,9,Patrick Rothfuss,thenameofthewind@example.com
 978-0-385-48695-0,The Da Vinci Code,Thriller,13,Dan Brown,davincicode@example.com
-978-0-593-06642-1,Gone Girl,Thriller,11,Gillian Flynn,gonegirl@example.com
+978-0-593-06642-1,Gone Girl,Thriller,10,Gillian Flynn,gonegirl@example.com
 978-0-316-35360-1,The Silent Patient,Thriller,10,Alex Michaelides,thesilentpatient@example.com
 

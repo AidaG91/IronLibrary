@@ -32,6 +32,4 @@ class IssueTest {
         assertEquals(returnDate.toString(), issue.getReturnDate() );
     }
 
-
-
 }

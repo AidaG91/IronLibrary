@@ -1,4 +1,4 @@
-package IronLibrary.utils;
+package IronLibrary.assets;
 
 public class Colors {
     // Colors for console output

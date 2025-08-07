@@ -1,4 +1,4 @@
-package IronLibrary.utils;
+package IronLibrary.assets;
 
 public class Emojis {
         public static final String BOOK             = "📖";
@@ -15,4 +15,5 @@ public class Emojis {
         public static final String HEART            = "❤️";
         public static final String WAVE             = "👋";
         public static final String WARNING          = "⚠️";
+        public static final String RETURN           = "📥";
 }
