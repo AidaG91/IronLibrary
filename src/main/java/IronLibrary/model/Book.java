@@ -58,23 +58,6 @@ public int quantity;
         this.title = title;
     }
 
-    //reducir cantidad al retirar un libro
-    public void issueBook() {
-        if (this.quantity > 0) {
-            System.out.println("He entrado");
-            System.out.println(this.quantity);
-            setQuantity(this.quantity - 1);
-            System.out.println(this.quantity);
-        } else {
-            throw new IllegalStateException("No copies of \"" + title + "\" available to issue.");
-        }
-    }
-
-    //incrementar cantidad al devolver un libro
-    public void returnBook() {
-        setQuantity(quantity++);
-    }
-
     //facilitar debug e impresion de libros
     @Override
     public String toString() {
