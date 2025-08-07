@@ -82,6 +82,48 @@ public class Choices {
         }
     }
 
+    // [EXTRA] Option 2 - Add a Student to a CSV (students.csv)
+    public static void addAStudent(Scanner scanner) {
+        System.out.println(WHITE_BRIGHT + "[Add a Student]" + RESET);
+
+        try {
+            System.out.print("Enter USN: ");
+            String usn = scanner.nextLine();
+            System.out.print("Enter name: ");
+            String name = scanner.nextLine();
+
+            // Check if Student already exist
+            if (doesStudentExist(usn)) {
+                System.out.println(WARNING + YELLOW_BRIGHT + " Student with USN " + usn + " already exists." + RESET);
+                return;
+            }
+
+            // Create the Student object
+            Student student = new Student(usn, name);
+
+            // Save the student data in the CSV file (one line per student)
+            FileWriter csv = new FileWriter(STUDENTS_FILE, true);
+
+            // If the CSV file is empty, write the header
+            File file = new File(STUDENTS_FILE);
+            if (file.length() == 0 || !file.exists()) {
+                csv.write("usn,name\n"); // Header CSV
+            }
+            csv.write(student.getUsn() + "," +
+                    student.getName() + "\n");
+            csv.close(); // Close File
+
+            // Print confirmation of the added student
+            System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
+            System.out.println(GREEN_BRIGHT + "[Student successfully created]\n"
+                    + "USN: " + student.getUsn() + "\n"
+                    + "Name: " + student.getName() + RESET);
+            System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
+        } catch (Exception e) {
+            System.out.println(RED_BRIGHT + "Error saving the student: " + RESET + e.getMessage());
+        }
+    }
+
     // Search using searchBooks()
     // Option 3 - Search a Book by Title
     public static void searchBookByTitle(Scanner scanner) {
@@ -125,6 +167,42 @@ public class Choices {
             searchBooks(BOOKS_FILE, "", "all");
         } catch (IOException e) {
             System.out.println(RED_BRIGHT + "Error: " + RESET + e.getMessage());
+        }
+    }
+
+    // Option 7 - List ALL the Books rented by a Student (USN)
+    public static void listBooksByUsn(Scanner scanner) {
+        System.out.println(WHITE_BRIGHT + "[List Books by USN]" + RESET);
+        System.out.print("Enter the student's USN: ");
+        String usn = scanner.nextLine();
+
+        // Read the issues CSV (issues.csv)
+        boolean found = false;
+        try (BufferedReader reader = new BufferedReader(new FileReader(ISSUES_FILE))) {
+            reader.readLine(); // First line (Header) omitted
+            String line;
+            System.out.println("\nBooks issued to USN: " + usn);
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 6 && data[0].trim().equalsIgnoreCase(usn)) {
+                    found = true;
+                    String bookTitle = data[3];
+                    String returnDate = data[5];
+
+                    // Print the list of issued books (show title, returnDate, check days until due and if overdue)
+                    System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
+                    System.out.println(WHITE_BRIGHT + "Book Title: " + bookTitle);
+                    daysUntilDue(returnDate);
+                    System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(RED_BRIGHT + "Error reading issued books: " + RESET + e.getMessage());
+        }
+
+        if (!found) {
+            System.out.println(RED_BRIGHT + "No books found for this USN." + RESET);
         }
     }
 
@@ -193,11 +271,11 @@ public class Choices {
             String issueDate = java.time.LocalDate.now().toString(); // "YYYY-MM-DD"
             Issue issue = new Issue(issueDate, student, book); // Using Issue's internal logic to calc returnDate
 
-
             if (issue.getIssueBook().getIsbn() == isbn && issue.getIssueBook().getQuantity() <= 0) {
                 System.out.println(WARNING + YELLOW_BRIGHT + " No copies available for this book." + RESET);
                 return;
             }
+
             // Write new issue data to CSV (issues.csv)
             File issuesFile = new File(ISSUES_FILE);
             try (FileWriter csv = new FileWriter(ISSUES_FILE, true)) {
@@ -217,84 +295,7 @@ public class Choices {
         }
     }
 
-    // Option 6 - List ALL the Books rented by a Student (USN)
-    public static void listBooksByUsn(Scanner scanner) {
-        System.out.println(WHITE_BRIGHT + "[List Books by USN]" + RESET);
-        System.out.print("Enter the student's USN: ");
-        String usn = scanner.nextLine();
-
-        // Read the issues CSV (issues.csv)
-        boolean found = false;
-        try (BufferedReader reader = new BufferedReader(new FileReader(ISSUES_FILE))) {
-            reader.readLine(); // First line (Header) omitted
-            String line;
-            System.out.println("\nBooks issued to USN: " + usn);
-
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data.length >= 6 && data[0].trim().equalsIgnoreCase(usn)) {
-                    found = true;
-                    String bookTitle = data[3];
-                    String returnDate = data[5];
-
-                    // Print the list of issued books (show title, returnDate)
-                    System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
-                    System.out.println(WHITE_BRIGHT + "Book Title: " + bookTitle);
-                    daysUntilDue(returnDate);
-                    System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
-                }
-            }
-        } catch (IOException e) {
-            System.out.println(RED_BRIGHT + "Error reading issued books: " + RESET + e.getMessage());
-        }
-
-        if (!found) {
-            System.out.println(RED_BRIGHT + "No books found for this USN." + RESET);
-        }
-    }
-
-    // [EXTRA] Option 2 - add a Student to a CSV (students.csv)
-    public static void addAStudent(Scanner scanner) {
-        System.out.println(WHITE_BRIGHT + "[Add a Student]" + RESET);
-
-        try {
-            System.out.print("Enter USN: ");
-            String usn = scanner.nextLine();
-            System.out.print("Enter name: ");
-            String name = scanner.nextLine();
-
-            // Check if Student already exist
-            if (doesStudentExist(usn)) {
-                System.out.println(WARNING + YELLOW_BRIGHT + " Student with USN " + usn + " already exists." + RESET);
-                return;
-            }
-
-            // Create the Student object
-            Student student = new Student(usn, name);
-
-            // Save the student data in the CSV file (one line per student)
-            FileWriter csv = new FileWriter(STUDENTS_FILE, true);
-
-            // If the CSV file is empty, write the header
-            File file = new File(STUDENTS_FILE);
-            if (file.length() == 0 || !file.exists()) {
-                csv.write("usn,name\n"); // Header CSV
-            }
-            csv.write(student.getUsn() + "," +
-                    student.getName() + "\n");
-            csv.close(); // Close File
-
-            // Print confirmation of the added student
-            System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
-            System.out.println(GREEN_BRIGHT + "[Student successfully created]\n"
-                    + "USN: " + student.getUsn() + "\n"
-                    + "Name: " + student.getName() + RESET);
-            System.out.println(GREEN_BRIGHT + "----------------------------------------------" + RESET);
-        } catch (Exception e) {
-            System.out.println(RED_BRIGHT + "Error saving the student: " + RESET + e.getMessage());
-        }
-    }
-    // Method to update book quantity in books.csv and delete the issue from issues.csv
+    // Option 9 - Method to update book quantity in books.csv and delete the issue from issues.csv
     public static void returnABook(Scanner scanner) {
         System.out.println(WHITE_BRIGHT + "[Return a Book]" + RESET);
         System.out.print("Enter the student's USN: ");

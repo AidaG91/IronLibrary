@@ -9,7 +9,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         printTitle(scanner);
-        while (true)
+        while (true) {
             mainMenuInput(scanner);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package IronLibrary.model;
 
-public class Author {// Private member variables
+// Represents an Author in the IronLibrary system
+public class Author {
     private static int idCounter = 1; // Helper for auto-increment
     private final int authorId;
     private String name;
@@ -21,7 +22,7 @@ public class Author {// Private member variables
         setEmail(email);
     }
 
-    // Getter methods
+    // Getters
     public int getAuthorId() {
         return authorId;
     }
@@ -38,7 +39,7 @@ public class Author {// Private member variables
         return authorBook;
     }
 
-    // Setter methods
+    // Setters
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Author name cannot be null or empty.");

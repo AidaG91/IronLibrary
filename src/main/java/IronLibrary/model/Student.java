@@ -1,5 +1,6 @@
 package IronLibrary.model;
 
+// Represents a Student in the IronLibrary system
 public class Student {
     private String usn;
     private String name;
@@ -38,7 +39,7 @@ public class Student {
 
     /* A method for printing student information clearly in logs and console,
     especially when listing or debugging students by USN.
-     */
+    */
     @Override
     public String toString() {
         return "Student[USN=" + usn + ", Name=" + name + "]";

@@ -1,5 +1,6 @@
 package IronLibrary.model;
 
+// Represents a Book in the IronLibrary system
 public class Book {
 private String isbn;
 private String title;
@@ -11,7 +12,7 @@ public int quantity;
         setTitle(title);
         setCategory(category);
         setQuantity(quantity);
-    } //comprobaciones con los setters desde el constructor, asi se aplican validaciones al crear el objeto
+    } // Use setters in the constructor to apply validations when creating the object
 
     public String getIsbn() {
         return isbn;
@@ -28,7 +29,7 @@ public int quantity;
         return quantity;
     }
 
-    //evitar cantidades negativas
+    // Prevent negative quantities
     public int setQuantity(int quantity) {
         if (quantity < 0) {
             throw new IllegalArgumentException("Quantity cannot be negative");
@@ -58,7 +59,7 @@ public int quantity;
         this.title = title;
     }
 
-    //facilitar debug e impresion de libros
+    // Provide a readable string for debugging and printing books
     @Override
     public String toString() {
         return String.format("%-22s %-20s %-12s %-10d",

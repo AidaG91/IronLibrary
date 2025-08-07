@@ -11,6 +11,7 @@ IronLibrary is a command-line library management system built with Java. It prov
 -   **Add Students**: Register new students with a unique USN (University Serial Number) and name.
 -   **Search**: Find books in the catalogue by title, category, or author.
 -   **Issue Books**: Lend books to registered students. The system automatically records the issue date and calculates a return date (7 days from issue).
+-   **Return Books**: Mark books as returned, updating both the lending record and the book's availability. 
 -   **View Records**:
     -   List all books available in the library along with their authors.
     -   List all books currently checked out by a specific student.
@@ -59,25 +60,41 @@ The application uses CSV files to store and retrieve data. These files are locat
 The project is organized into several packages to separate concerns:
 
 ```
-└── IronLibrary/
-    ├── pom.xml                     # Maven project configuration
-    └── src/main/java/IronLibrary/
-        ├── Main.java                 # Application entry point
-        ├── csv/
-        │   ├── books.csv             # Database for books
-        │   ├── issues.csv            # Database for book loans
-        │   └── students.csv          # Database for students
-        ├── menu/
-        │   └── LibraryMenu.java      # Handles console menu display and input
-        ├── model/
-        │   ├── Author.java           # Data model for authors
-        │   ├── Book.java             # Data model for books
-        │   ├── Issue.java            # Data model for lending records
-        │   └── Student.java          # Data model for students
-        └── utils/
-            ├── Choices.java          # Implements the logic for menu choices
-            ├── Prints.java           # Formatted console output methods
-            └── Utils.java            # Helper functions for CSV operations and searches
+IronLibrary/
+├── README.md                               # About the project and how to use it
+├── pom.xml                                 # Maven project configuration
+└── src/
+    ├── main/
+    │   └── java/
+    │       └── IronLibrary/
+    │           ├── assets/
+    │           │   ├── Colors.java         # Contains color codes for console output
+    │           │   └── Emojis.java         # Contains emoji constants for console output
+    │           ├── csv/
+    │           │   ├── books.csv           # Database for books
+    │           │   ├── issues.csv          # Database for book loans
+    │           │   └── students.csv        # Database for students
+    │           ├── Main.java               # Application entry point
+    │           ├── menu/
+    │           │   └── LibraryMenu.java    # Handles console menu display and input
+    │           ├── model/
+    │           │   ├── Author.java         # Data model for authors
+    │           │   ├── Book.java           # Data model for books
+    │           │   ├── Issue.java          # Data model for lending records
+    │           │   └── Student.java        # Data model for students
+    │           └── utils/
+    │               ├── Choices.java        # Implements the logic for menu choices
+    │               ├── Prints.java         # Formatted console output methods
+    │               └── Utils.java          # Helper functions for CSV operations and searches
+    │
+    └── test/
+        └── java/
+            └── IronLibrary/
+                ├── model/
+                │   └── IssueTest.java          # Unit tests for lending records logic
+                └── utils/
+                    └── ChoicesTest.java        # Unit tests for menu choices logic
+
 ```
 ## Team Members
 
