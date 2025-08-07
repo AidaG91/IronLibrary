@@ -24,8 +24,8 @@ public class LibraryMenu {
                         WHITE_BRIGHT + "3 - " + CATEGORY + BLUE_BRIGHT   + " Search book by Category" + RESET + "\n" +
                         WHITE_BRIGHT + "4 - " + TEACHER + BLUE_BRIGHT   + " Search book by Author" + RESET + "\n" +
                         WHITE_BRIGHT + "5 - " + BOOKS + BLUE_BRIGHT   + " List All Books along with Author" + RESET + "\n" +
-                        WHITE_BRIGHT + "6 - " + LINK + YELLOW_BRIGHT + " Issue Book to Student" + RESET + "\n" +
-                        WHITE_BRIGHT + "7 - " + ID_CARD + YELLOW_BRIGHT + " List Books by USN" + RESET + "\n" +
+                        WHITE_BRIGHT + "6 - " + LINK + GREEN_BRIGHT + " Issue Book to Student" + RESET + "\n" +
+                        WHITE_BRIGHT + "7 - " + ID_CARD + BLUE_BRIGHT + " List Books by USN" + RESET + "\n" +
                         WHITE_BRIGHT + "8 - " + STUDENT + GREEN_BRIGHT  + " Add a Student" + RESET + "\n" +
                         WHITE_BRIGHT + "9 - " + RED_BRIGHT + EXIT + " Exit" + RESET + "\n"
         );

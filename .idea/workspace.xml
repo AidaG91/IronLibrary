@@ -6,16 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="92a86b7e-7765-4dbe-8550-aaec2b3925b4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/books.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/books.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/issues.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/issues.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/students.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/csv/students.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/menu/LibraryMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/menu/LibraryMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/model/Issue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/model/Issue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Choices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Choices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Prints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Prints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IronLibrary/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/IronLibrary/utils/ChoicesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IronLibrary/utils/ChoicesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +80,7 @@
       <recent name="IronLibrary.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ChoicesTest.testIssueBookToStudent">
+  <component name="RunManager" selected="Application.IronLibraryApp">
     <configuration name="IronLibraryApp" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="IronLibrary.Main" />
       <module name="IronLibrary" />
@@ -109,84 +103,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ChoicesTest.testAddAStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IronLibrary" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="IronLibrary.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="IronLibrary.utils" />
-      <option name="MAIN_CLASS_NAME" value="IronLibrary.utils.ChoicesTest" />
-      <option name="METHOD_NAME" value="testAddAStudent" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ChoicesTest.testIssueBookToStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IronLibrary" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="IronLibrary.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="IronLibrary.utils" />
-      <option name="MAIN_CLASS_NAME" value="IronLibrary.utils.ChoicesTest" />
-      <option name="METHOD_NAME" value="testIssueBookToStudent" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ChoicesTest.testListAllBooksWithAuthor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IronLibrary" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="IronLibrary.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="IronLibrary.utils" />
-      <option name="MAIN_CLASS_NAME" value="IronLibrary.utils.ChoicesTest" />
-      <option name="METHOD_NAME" value="testListAllBooksWithAuthor" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ChoicesTest.testListBooksByUsn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IronLibrary" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="IronLibrary.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="IronLibrary.utils" />
-      <option name="MAIN_CLASS_NAME" value="IronLibrary.utils.ChoicesTest" />
-      <option name="METHOD_NAME" value="testListBooksByUsn" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.IronLibraryApp" />
-      <item itemvalue="JUnit.ChoicesTest.testIssueBookToStudent" />
-      <item itemvalue="JUnit.ChoicesTest.testListBooksByUsn" />
       <item itemvalue="JUnit.ChoicesTest" />
-      <item itemvalue="JUnit.ChoicesTest.testAddAStudent" />
-      <item itemvalue="JUnit.ChoicesTest.testListAllBooksWithAuthor" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ChoicesTest.testIssueBookToStudent" />
-        <item itemvalue="JUnit.ChoicesTest.testListBooksByUsn" />
-        <item itemvalue="JUnit.ChoicesTest.testListAllBooksWithAuthor" />
-        <item itemvalue="JUnit.ChoicesTest.testAddAStudent" />
         <item itemvalue="JUnit.ChoicesTest" />
       </list>
     </recent_temporary>
